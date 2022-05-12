@@ -16,7 +16,7 @@ class BDAHelloController {
 
   public function get_last_news() {
       $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
-      $storage = \Drupal::entityTypeManager()->getStorage('node'); 
+      // $storage = \Drupal::entityTypeManager()->getStorage('node'); 
 
       $ids = $nodeStorage->getQuery()
       ->condition('status', 1)
@@ -40,6 +40,31 @@ class BDAHelloController {
       // return array(
       //     '#markup' => $build
       // ); 
+  }
+
+  public function get_news_category($category_id) {
+    
+    // $taxonomy = \Drupal::entityTypeManager()->getStorage('taxonomy_term_data');
+    // $category = $taxonomy->getQuery()
+    // ->condition('tid', $category_id)
+    // ->execute();
+    // print_r($category);
+    $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+    
+    $ids = $nodeStorage->getQuery()
+    ->condition('status', 1)
+    ->condition('type', 'news')
+    ->condition('field_news_category.entity:taxonomy_term.tid', $category_id)
+    ->execute();
+    
+    $entity_type = 'node';
+    $view_mode = 'full';  
+    $builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
+    $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
+    $node = $storage->loadMultiple($ids);
+    $build = $builder->viewMultiple($node, $view_mode);
+    return $build;
+
   }
 
 }

@@ -13,3 +13,11 @@ bda_hello.last_news:
     _title: 'Last news'
   requirements: 
     _permission: 'access content, view latest news page'
+
+bda_hello.news_category:
+  path: '/news/category/{category_id}'
+  defaults:
+    _controller: '\Drupal\bda_hello\Controller\BDAHelloController::get_news_category'
+    _title: 'News in category'
+  requirements: 
+    _permission: 'access content'
