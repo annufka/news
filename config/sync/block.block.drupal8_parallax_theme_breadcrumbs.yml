@@ -1,0 +1,22 @@
+uuid: 36300e0b-a485-43bc-b74c-3682b726a127
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - drupal8_parallax_theme
+_core:
+  default_config_hash: UApb-GbF9pRRJML6r6e33eXgOucYBDo9-fEPKsebAnQ
+id: drupal8_parallax_theme_breadcrumbs
+theme: drupal8_parallax_theme
+region: breadcrumb
+weight: -100
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,15 @@
+bda_hello.hello:
+  path: '/hello'
+  defaults:
+    _controller: '\Drupal\bda_hello\Controller\BDAHelloController::hello'
+    _title: 'Welcome to My Module in Drupal 9'
+  requirements: 
+    _permission: 'access content'
+
+bda_hello.last_news:
+  path: '/news/latest'
+  defaults:
+    _controller: '\Drupal\bda_hello\Controller\BDAHelloController::get_last_news'
+    _title: 'Last news'
+  requirements: 
+    _permission: 'access content, view latest news page'

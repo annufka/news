@@ -1,0 +1,86 @@
+uuid: 89aa6906-696d-40ed-8874-d144a2cc7d76
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.news.field_news_category
+    - field.field.node.news.field_news_description
+    - field.field.node.news.field_news_main_picture
+    - field.field.node.news.field_news_type
+    - image.style.media_library
+    - node.type.news
+  module:
+    - ds
+    - media
+    - taxonomy
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_2col
+      library: ds/ds_2col
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+        wrappers:
+          left: div
+          right: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      left:
+        - field_news_main_picture
+      right:
+        - node_title
+        - field_news_description
+        - field_news_category
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: true
+          'link class': ''
+          wrapper: h2
+          class: ''
+id: node.news.teaser
+targetEntityType: node
+bundle: news
+mode: teaser
+content:
+  field_news_category:
+    type: entity_reference_rss_category
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: right
+  field_news_description:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 500
+    third_party_settings: {  }
+    weight: 2
+    region: right
+  field_news_main_picture:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: media_library
+    third_party_settings: {  }
+    weight: 0
+    region: left
+hidden:
+  field_news_type: true
+  links: true
