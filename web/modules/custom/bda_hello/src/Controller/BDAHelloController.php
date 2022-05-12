@@ -22,7 +22,9 @@ class BDAHelloController {
       ->condition('status', 1)
       ->condition('type', 'news') // type = bundle id (machine name)
       ->sort('created', 'DESC') // sorted by time of creation
-      ->pager(1) // limit 15 items
+      // ->sort('nid', 'DESC')
+      // ->pager(1) // limit 15 items
+      ->range(0,1)
       ->execute();
       // print_r($ids);
       // $news = $nodeStorage->loadMultiple($ids);
@@ -34,7 +36,7 @@ class BDAHelloController {
       $node = $storage->load(reset($ids));
       $build = $builder->view($node, $view_mode);
       // $output = render($build); 
-return $build;
+      return $build;
       // return array(
       //     '#markup' => $build
       // ); 
