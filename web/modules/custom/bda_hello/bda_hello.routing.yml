@@ -12,7 +12,7 @@ bda_hello.last_news:
     _controller: '\Drupal\bda_hello\Controller\BDAHelloController::get_last_news'
     _title: 'Last news'
   requirements: 
-    _permission: 'access content, view latest news page'
+    _permission: 'view latest news page'
 
 bda_hello.news_category:
   path: '/news/category/{category_id}'
@@ -22,10 +22,10 @@ bda_hello.news_category:
   requirements: 
     _permission: 'access content'
 
-  bda_hello.add_news:
-    path: '/add-news'
-    defaults:
-      _form: '\Drupal\bda_hello\Form\BDAAddNewsForm'
-      _title: 'Add news'
-    requirements: 
-      _permission: 'access content, add news'
+bda_hello.add_news:
+  path: '/add-news'
+  defaults:
+    _form: '\Drupal\bda_hello\Form\BDAAddNewsForm'
+    _title: 'Add news'
+  requirements: 
+    _permission: 'add news'
