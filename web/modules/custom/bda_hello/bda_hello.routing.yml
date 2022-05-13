@@ -21,3 +21,11 @@ bda_hello.news_category:
     _title: 'News in category'
   requirements: 
     _permission: 'access content'
+
+  bda_hello.add_news:
+    path: '/add-news'
+    defaults:
+      _form: '\Drupal\bda_hello\Form\BDAAddNewsForm'
+      _title: 'Add news'
+    requirements: 
+      _permission: 'access content, add news'
