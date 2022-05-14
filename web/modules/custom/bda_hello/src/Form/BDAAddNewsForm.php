@@ -18,10 +18,28 @@ class BDAAddNewsForm extends FormBase {
           '#required' => TRUE,
         );
         $form['news_text'] = array(
-            '#type' => 'textarea',
+            '#type' => 'text_format',
             '#title' => $this->t('News Description:'),
+            '#format' => 'basic_html',
             '#required' => TRUE,
           );
+
+        $termStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+        $ids = $termStorage->getQuery()
+            ->condition('vid', 'Category_of_news')
+            ->execute();
+      
+        $categories = [];
+        foreach ($termStorage->loadMultiple($ids) as $item) {
+            $categories[$item->id()] = $item->label();
+        }
+          
+        $form['news_category'] = array(
+            '#type' => 'select',
+            '#options' => $categories,
+            '#title' => $this->t('Category: '),
+        );
+
         $form['submit'] = array(
             '#type' => 'submit',
             '#value' => $this->t('Add'),
@@ -52,6 +70,7 @@ class BDAAddNewsForm extends FormBase {
         'field_news_description' => $form_state->getValue('news_text'), 
         'uid' => \Drupal::currentUser()->id(),
         'status' => 0, 
+        'field_news_category' => $form_state->getValue('news_category'), 
         ]);
         $news->save();
 
