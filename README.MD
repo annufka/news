@@ -16,6 +16,7 @@ workflows
 simple_sitemap
 metatag
 ds
+inline form errors
 
 
 

@@ -29,3 +29,11 @@ bda_hello.add_news:
     _title: 'Add news'
   requirements: 
     _permission: 'add news'
+
+bda_hello_news_filter.settings:
+  path: '/admin/config/news/filter/settings'
+  defaults:
+    _form: '\Drupal\bda_hello\Form\BDAFilterNewsForm'
+    _title: 'Filter news'
+  requirements:
+    _permission: 'administer site configuration'
