@@ -6,6 +6,14 @@ bda_hello.hello:
   requirements: 
     _permission: 'access content'
 
+bda_hello.news:
+  path: '/news'
+  defaults:
+    _controller: '\Drupal\bda_hello\Controller\BDAHelloController::filter_news'
+    _title: 'News'
+  requirements:
+    _permission: 'access content'
+
 bda_hello.last_news:
   path: '/news/latest'
   defaults:

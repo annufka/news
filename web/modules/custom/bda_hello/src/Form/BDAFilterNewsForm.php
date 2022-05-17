@@ -23,7 +23,7 @@ class BDAFilterNewsForm extends ConfigFormBase {
         $form['filter_field'] = array(
             '#type' => 'radios',
             '#title' => $this->t('News filter:'),
-            '#options' => array('Create' => 'by create date', 'Change' => 'by change date'),
+            '#options' => array('created' => 'by create date', 'changed' => 'by change date'),
             '#default_value' => $config->get('news_filter'),
             '#required' => TRUE,
             );
