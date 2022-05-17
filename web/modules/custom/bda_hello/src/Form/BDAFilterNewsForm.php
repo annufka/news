@@ -34,7 +34,7 @@ class BDAFilterNewsForm extends ConfigFormBase {
       public function submitForm(array &$form, FormStateInterface $form_state) {  
       
         $this->config('bda_hello_news_filter.settings')  
-          ->set('news_filter', $form_state->getValue('news_filter'))  
+          ->set('news_filter', $form_state->getValue('filter_field'))  
           ->save(); 
           
         parent::submitForm($form, $form_state);
