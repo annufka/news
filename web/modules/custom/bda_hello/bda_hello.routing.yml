@@ -45,3 +45,11 @@ bda_hello_news_filter.settings:
     _title: 'Filter news'
   requirements:
     _permission: 'administer site configuration'
+
+bda_hello.twig:
+  path: '/twig'
+  defaults:
+    _controller: '\Drupal\bda_hello\Controller\BDAHelloTwigController::content'
+    _title: 'Example'
+  requirements: 
+    _permission: 'access content'
