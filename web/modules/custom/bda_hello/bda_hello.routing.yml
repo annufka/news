@@ -53,3 +53,11 @@ bda_hello.twig:
     _title: 'Example'
   requirements: 
     _permission: 'access content'
+
+bda_hello_form.twig:
+  path: '/form-hook'
+  defaults:
+    _controller: '\Drupal\bda_hello\Controller\BDAHelloTwigController::form'
+    _title: 'Form'
+  requirements: 
+    _permission: 'access content'
