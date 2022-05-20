@@ -1,4 +1,7 @@
 <?php 
+
+    use Drupal\Core\Access\AccessResult;
+
     function bda_hello_theme($existing, $type, $theme, $path) {
       return [
       'bda-hello-template' => [
@@ -31,3 +34,13 @@
             $form_state->setRedirectUrl($url);
         }
     }
+
+    /**
+     * Implements hook_entity_field_access().
+     */
+    function bda_hello_entity_field_access($operation, $field_definition, $account, $items = NULL) {
+        if ($field_definition->getName() == 'field_date_of_publish' && $operation == 'edit' && !$account->hasPermission('add publish date')) {
+            return AccessResult::forbidden();  
+        } 
+        return AccessResult::allowed();  
+    }   
