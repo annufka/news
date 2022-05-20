@@ -7,12 +7,27 @@
     ];
     }
 
+    /**
+    * Implements hook_form_alter().
+    */
     function bda_hello_form_alter(&$form, $form_state, $form_id) {
-        // global $user;
-        // if ($form_id) {}
-        return [
-            'bda-gello-form-template' => [
-            //   'variables' => ['form' => $form, 'state' => $form_state, 'id' => $form_id],
-            ],
-          ];
+        if ($form_id == 'user_login_form') {
+            $form['#submit'][] = 'dba_hello_user_login_submit';
+        }
+    }
+
+    // http://web.localhost/user/login
+
+    /**
+     * Additional handler for user_login form submit.
+     */
+    function dba_hello_user_login_submit($form, &$form_state) {
+        $roles = \Drupal::currentUser()->getRoles();
+        if (in_array('moderator', $roles)) {
+            $url = Drupal\core\Url::fromUserInput('/admin/content');
+            $form_state->setRedirectUrl($url);
+        } else {
+            $url = Drupal\core\Url::fromUserInput('/');
+            $form_state->setRedirectUrl($url);
+        }
     }

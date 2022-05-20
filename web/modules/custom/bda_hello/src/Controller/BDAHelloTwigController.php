@@ -14,11 +14,4 @@ class BDAHelloTwigController extends ControllerBase {
  
   }
 
-  public function form() {
- 
-    return [
-      '#theme' => 'bda-hello-form-template',
-    ];
- 
-  }
 }
