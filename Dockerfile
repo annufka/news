@@ -15,6 +15,18 @@ RUN apt-get update && apt-get install -y \
   
 RUN a2enmod rewrite
 
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && { \
+          echo "zend_extension=xdebug"; \
+          echo "xdebug.mode=debug"; \
+          echo "xdebug.start_with_request=yes"; \
+          echo "xdebug.client_host=host.docker.internal"; \
+          echo "xdebug.client_port=9000"; \
+          echo "xdebug.idekey=vscode"; \
+          echo "xdebug.log_level=0"; \
+      } > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini;
+
 COPY vhost.conf /etc/apache2/sites-enabled/000-default.conf
 
 RUN mkdir /home/www-data \

@@ -9,3 +9,7 @@ add news:
 add publish date:
   title: 'Add news publish date'
   description: 'Add/update news publish date'
+
+future news:
+  title: 'See future news'
+  description: 'See future news'
