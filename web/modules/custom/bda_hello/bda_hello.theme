@@ -1,0 +1,10 @@
+<?php 
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function bda_hello_theme_suggestions_alter(&$suggestions, $variables, $hook) {
+    if ($hook == 'node') {
+        $suggestions[] = 'comment-submitted';
+    }
+}
