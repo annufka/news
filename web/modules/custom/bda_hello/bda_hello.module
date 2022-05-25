@@ -6,8 +6,8 @@
 
     function bda_hello_theme($existing, $type, $theme, $path) {
       return [
-      'bda-hello-template' => [
-        'variables' => ['test_var' => NULL],
+       'bda-hello-template-bookmark-true' => [
+        'variables' => ['type' => NULL],
        ],
     ];
     }
