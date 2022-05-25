@@ -79,3 +79,10 @@
         }
         return AccessResult::allowed();
     }
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function bda_hello_preprocess_bda_hello(&$variables) {
+    $variables['#attached']['library'][] = 'bda_hello/custom';
+  }
